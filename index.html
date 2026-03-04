@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Mừng Sinh Nhật!</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap');
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene-container"></div>
+
+      <div id="ui-layer">
+        <div id="start-screen" class="overlay">
+          <div class="glass-card">
+            <h1>Chúc Mừng Sinh Nhật! 🎂</h1>
+            <p>Chào mừng bạn đến với món quà bất ngờ này.</p>
+            <button id="start-btn">Khám phá ngay</button>
+          </div>
+        </div>
+
+        <div id="instruction" class="hidden">
+          <p>Nhấn vào thiệp để mở/đóng</p>
+        </div>
+
+        <div id="message-box" class="hidden">
+          <div class="glass-card">
+            <h2 id="birthday-title">Happy Birthday!</h2>
+            <p id="birthday-text">Chúc bạn một ngày sinh nhật thật ý nghĩa, tràn ngập niềm vui và hạnh phúc! Mong rằng mọi điều tốt đẹp nhất sẽ đến với bạn trong tuổi mới.</p>
+            <button id="close-msg">Đóng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
