@@ -275,9 +275,34 @@ function createText(txt) {
 
 function animate() {
     requestAnimationFrame(animate);
-    balloons.forEach(b => { b.position.y += Math.sin(Date.now() * 0.001 + b.offset) * 0.005; b.rotation.y += 0.01; });
-    confettiParticles.forEach((p, i) => { p.position.add(p.velocity); p.velocity.y -= 0.005; p.rotation.x += p.rotationSpeed.x; if (p.position.y < -10) { scene.remove(p); confettiParticles.splice(i, 1); }});
-    fireworkParticles.forEach((p, i) => { p.position.add(p.velocity); p.velocity.y -= 0.002; p.scale.multiplyScalar(0.98); if (p.scale.x < 0.01) { scene.remove(p); fireworkParticles.splice(i, 1); }});
+
+    balloons.forEach(b => {
+        b.position.y += Math.sin(Date.now() * 0.001 + b.offset) * 0.005;
+        b.rotation.y += 0.01;
+    });
+
+    for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.position.add(p.velocity);
+        p.velocity.y -= 0.005;
+        p.rotation.x += p.rotationSpeed.x;
+        if (p.position.y < -10) {
+            scene.remove(p);
+            confettiParticles.splice(i, 1);
+        }
+    }
+
+    for (let i = fireworkParticles.length - 1; i >= 0; i--) {
+        const p = fireworkParticles[i];
+        p.position.add(p.velocity);
+        p.velocity.y -= 0.002;
+        p.scale.multiplyScalar(0.98);
+        if (p.scale.x < 0.01) {
+            scene.remove(p);
+            fireworkParticles.splice(i, 1);
+        }
+    }
+
     if (giftBox) giftBox.rotation.y += 0.01;
     controls.update();
     renderer.render(scene, camera);
@@ -298,3 +323,7 @@ window.addEventListener('resize', () => {
 });
 
 init();
+
+// Expose for debugging/verification
+window.toggleCard = toggleCard;
+window.blowOutCandles = blowOutCandles;
